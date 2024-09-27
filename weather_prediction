@@ -1,0 +1,50 @@
+import pandas as pd #importing exisiting codes and renaming
+from sklearn.linear_model import LinearRegression
+
+#preform step 2 : have past data ready
+# 2b: load data into pycharm
+data: pd.DataFrame = pd.read_csv('MET_office_weather_data.csv') #Read a comma-separated values (csv) file into DataFrame
+
+# 2c: filter for relevant data (location , date , time, rain)
+features: list[str] = ['year','month', 'station']
+target: str = 'rain'
+#filter takes in all data and outputs relevant data based on the critrqia
+x: pd.DataFrame = data[features]
+y: pd.tseries = data[target]
+
+x.to_csv('X.csv',index=False)
+y.to_csv ('series_data.csv', header=True, index=False)# how to write series into a csv file
+#preform step 3: make future predictions
+
+
+
+# go on statquest yt channel , look for linearRegression
+model = LinearRegression()
+model.fit(x, y)
+
+#future prediction data new variable
+future_data = pd.DataFrame({
+    'year': [2024],
+    'month':[12],
+    'station': ['aberporth']
+}
+)
+
+predicted_rain = model.predict(future_data)
+
+print("Predicted Rainfall:", predicted_rain)
+
+# what is a linear regresion model
+
+x: int = 1
+y: str = 'hint'
+
+
+
+
+
+
+
+
+
+
